@@ -3,9 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About MEDAI</title>
+    <title>medAI - AI Medical Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>About</h1>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <h1>medAI</h1>
+            </div>
+            <nav class="nav">
+                <button class="nav-btn" onclick="showLogin()">Login</button>
+                <button class="nav-btn" onclick="showSignup()">Sign Up</button>
+                <button class="nav-btn" onclick="showAbout()">About</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Login/Signup Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="loginForm">
+                <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
+                <form>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Name" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+            </div>
+            <div id="signupForm" style="display: none;">
+                <h2><i class="fas fa-user-plus"></i> Sign Up</h2>
+                <form>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <select class="input-group">
+                        <option>Sign up as Doctor</option>
+                        <option>Sign up as Patient</option>
+                    </select>
+                    <div class="input-group">
+                        <i class="fas fa-graduation-cap"></i>
+                        <input type="text" placeholder="Degree (Doctor only)" disabled>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-camera"></i>
+                        <input type="file" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn-primary">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="hero">
+        <div class="container">
+            <h2>Your AI Medical Assistant</h2>
+            <p>Get instant medical advice, find doctors nearby, and manage your health</p>
+            
+            <div class="features">
+                <div class="feature-card" onclick="openChat()">
+                    <i class="fas fa-comments"></i>
+                    <h3>Start Chat</h3>
+                    <p>AI Medical Chatbot</p>
+                </div>
+                <div class="feature-card" onclick="window.location.href='doc.html'">
+                    <i class="fas fa-search-doctor"></i>
+                    <h3>Find Doctor</h3>
+                    <p>Search nearby doctors</p>
+                </div>
+                <div class="feature-card" onclick="showReviews()">
+                    <i class="fas fa-star"></i>
+                    <h3>Reviews</h3>
+                    <p>Read doctor reviews</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
