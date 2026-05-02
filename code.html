@@ -3,157 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Med AI - Healthcare AI Platform</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>medAI - AI Medical Assistant</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header class="header">
         <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-heartbeat" style="color: #2563eb; font-size: 32px;"></i>
-                    <h1>Med AI</h1>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#ai-chat">AI Chat</a></li>
-                        <li><a href="#reviews">Reviews</a></li>
-                        <li><a href="#doctors">Doctors</a></li>
-                        <li id="about"><a href="#about">About</a></li>
-                    </ul>
-                </nav>
-                <div class="auth-buttons">
-                    <button class="btn btn-outline">Login</button>
-                    <button class="btn btn-primary">Sign Up</button>
-                </div>
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <h1>medAI</h1>
             </div>
+            <nav class="nav">
+                <button class="nav-btn" onclick="showLogin()">Login</button>
+                <button class="nav-btn" onclick="showSignup()">Sign Up</button>
+                <button class="nav-btn" onclick="showAbout()">About</button>
+            </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h2>Your AI-Powered Healthcare Assistant</h2>
-            <p>Get instant medical insights, connect with verified doctors, and manage your health with our advanced AI technology.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary" id="chat">Start AI Chat</button>
-                <button class="btn btn-outline" id="doc">Find a Doctor</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>How Med AI Helps You</h2>
-                <p>Our platform combines artificial intelligence with medical expertise to provide comprehensive healthcare solutions</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>AI Health Assistant</h3>
-                    <p>Get immediate responses to your health questions from our advanced AI chatbot, trained on medical knowledge.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-user-md"></i>
-                    <h3>Doctor Verification</h3>
-                    <p>All medical advice is verified by certified healthcare professionals to ensure accuracy and safety.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-calendar-check"></i>
-                    <h3>Doctor Appointments</h3>
-                    <p>Easily book appointments with specialists based on your health needs and location.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="how-it-works">
-        <div class="container">
-            <div class="section-title">
-                <h2>How It Works</h2>
-                <p>Three simple steps to get the healthcare support you need</p>
-            </div>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-connector"></div>
-                    <h3>Chat with AI</h3>
-                    <p>Describe your symptoms or health questions to our AI assistant</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-connector"></div>
-                    <h3>Get Verified</h3>
-                    <p>Our medical team reviews and verifies the AI recommendations</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Connect with Doctors</h3>
-                    <p>Book appointments with relevant specialists if needed</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AI Chat Section -->
-    <section class="ai-chat-section" id="ai-chat">
-        <div class="container">
-            <div class="section-title">
-                <h2>AI Health Assistant</h2>
-                <p>Chat with our AI to get immediate insights about your health concerns</p>
-            </div>
-            <div class="chat-container">
-                <div class="chat-header">
-                    <i class="fas fa-robot"></i>
-                    <h3>Med AI Assistant</h3>
-                </div>
-                <div class="chat-messages" id="chatMessages">
-                    <div class="message bot-message">
-                        Hello! I'm your Med AI assistant. How can I help with your health concerns today?
+    <!-- Login/Signup Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="loginForm">
+                <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
+                <form>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Name" required>
                     </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                </form>
+            </div>
+            <div id="signupForm" style="display: none;">
+                <h2><i class="fas fa-user-plus"></i> Sign Up</h2>
+                <form>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" required>
+                    </div>
+                    <select class="input-group">
+                        <option>Sign up as Doctor</option>
+                        <option>Sign up as Patient</option>
+                    </select>
+                    <div class="input-group">
+                        <i class="fas fa-graduation-cap"></i>
+                        <input type="text" placeholder="Degree (Doctor only)" disabled>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-camera"></i>
+                        <input type="file" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn-primary">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="hero">
+        <div class="container">
+            <h2>Your AI Medical Assistant</h2>
+            <p>Get instant medical advice, find doctors nearby, and manage your health</p>
+            
+            <div class="features">
+                <div class="feature-card" onclick="openChat()">
+                    <i class="fas fa-comments"></i>
+                    <h3>Start Chat</h3>
+                    <p>AI Medical Chatbot</p>
                 </div>
-                <div class="chat-input">
-                    <input type="text" id="userInput" placeholder="Type your health question here...">
-                    <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+                <div class="feature-card" onclick="window.location.href='doc.html'">
+                    <i class="fas fa-search-doctor"></i>
+                    <h3>Find Doctor</h3>
+                    <p>Search nearby doctors</p>
+                </div>
+                <div class="feature-card" onclick="showReviews()">
+                    <i class="fas fa-star"></i>
+                    <h3>Reviews</h3>
+                    <p>Read doctor reviews</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Reviews Section -->
-    <section class="reviews-section" id="reviews">
-        <div class="container">
-            <div class="section-title">
-                <h2>Doctor-Verified Reviews</h2>
-                <p>All AI responses are reviewed by our medical team for accuracy</p>
-                
-    </div>
-</div>
-
-<!-- About Popup -->
-<div id="aboutPopup" class="popup">
-  <div class="popup-content">
-    <span id="closePopup" class="close">&times;</span>
-    <h2>About Med AI</h2>
-    <p>
-      Med AI is your AI-powered healthcare assistant. It provides instant medical
-      insights, connects you with verified doctors, and helps you manage your health.
-    </p>
-  </div>
-</div>
-
-
-</div>
-
-
-
-            </body>
-            <script src="script.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>
